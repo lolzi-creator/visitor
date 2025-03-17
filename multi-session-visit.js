@@ -1,150 +1,29 @@
-// fixed-proxy-visit.js
+// multi-session-visit.js
 require('dotenv').config();
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+const path = require('path');
+const PROXIES = require('./proxies');
 
 // Get the token identifier from .env file
 const tokenIdentifier = process.env.TOKEN_IDENTIFIER || 'distribute';
-const visitCount = parseInt(process.env.VISIT_COUNT) || 3;
 const visitDelay = parseInt(process.env.VISIT_DELAY) || 10000; // 10 seconds between visits
+const concurrentSessions = parseInt(process.env.CONCURRENT_SESSIONS) || 4; // Default to 4 concurrent sessions
 
-// Hardcoded proxies from webshare with authentication
-const PROXIES = [
-    {
-        host: "2.57.20.183",
-        port: "6175",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "31.58.23.77",
-        port: "5650",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "103.37.181.180",
-        port: "6836",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "92.112.174.67",
-        port: "5651",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "31.58.30.208",
-        port: "6790",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "185.15.178.83",
-        port: "5767",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "109.196.163.163",
-        port: "6261",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "81.21.234.148",
-        port: "6537",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "104.239.105.178",
-        port: "6708",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "161.123.93.54",
-        port: "5784",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "142.111.48.200",
-        port: "6977",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "31.58.19.121",
-        port: "6393",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "145.223.44.48",
-        port: "5731",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "103.251.223.100",
-        port: "6079",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "142.202.254.119",
-        port: "6097",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "45.39.35.111",
-        port: "5544",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "45.43.191.48",
-        port: "6009",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "198.37.118.85",
-        port: "5544",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "185.101.253.17",
-        port: "5577",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    },
-    {
-        host: "107.181.150.84",
-        port: "5833",
-        username: "amgrhbto",
-        password: "utm9h7xxzuoa"
-    }
-];
+// Create directories if they don't exist
+const logsDir = './logs';
+const screenshotsBaseDir = './screenshots';
 
-// Function to get a random proxy
-function getRandomProxy() {
-    return PROXIES[Math.floor(Math.random() * PROXIES.length)];
+if (!fs.existsSync(logsDir)) {
+    fs.mkdirSync(logsDir, { recursive: true });
+}
+
+if (!fs.existsSync(screenshotsBaseDir)) {
+    fs.mkdirSync(screenshotsBaseDir, { recursive: true });
 }
 
 // Function to log results
 function logResult(result) {
-    // Create logs directory if it doesn't exist
-    const logsDir = './logs';
-    if (!fs.existsSync(logsDir)) {
-        fs.mkdirSync(logsDir, { recursive: true });
-    }
-
     const logFile = `${logsDir}/visit-log.json`;
     let logs = [];
 
@@ -168,6 +47,11 @@ function logResult(result) {
     console.log(`Log saved to ${logFile}`);
 }
 
+// Function to get a random proxy
+function getRandomProxy() {
+    return PROXIES[Math.floor(Math.random() * PROXIES.length)];
+}
+
 // Function to check for privacy popups and handle them
 async function checkAndHandleDoNotSellPopup(page, saveScreenshot, safeWait) {
     console.log('Checking for privacy popups...');
@@ -184,8 +68,8 @@ async function checkAndHandleDoNotSellPopup(page, saveScreenshot, safeWait) {
         });
 
         if (hasPrivacyPopup) {
-            console.log('Found "Do Not Sell or Share My Personal Data" popup');
-            await saveScreenshot(page, 'do-not-sell-popup');
+            console.log('Found privacy popup');
+            await saveScreenshot(page, 'privacy-popup');
 
             // Try to find the "Reject All" button
             const clickedRejectButton = await page.evaluate(() => {
@@ -239,22 +123,22 @@ async function checkAndHandleDoNotSellPopup(page, saveScreenshot, safeWait) {
             }
         }
     } catch (e) {
-        console.log('Error handling "Do Not Sell" popup:', e.message);
+        console.log('Error handling privacy popup:', e.message);
     }
     return false;
 }
 
 // Simple function to visit a page with Puppeteer
-async function visitPage() {
+async function visitPage(sessionId) {
     const proxy = getRandomProxy();
 
     // Create a unique directory for this visit's screenshots
     const timestamp = Date.now();
-    const visitId = `visit-${timestamp}`;
-    const screenshotsDir = `./screenshots/${visitId}`;
+    const visitId = `visit-s${sessionId}-${timestamp}`;
+    const screenshotsDir = path.join(screenshotsBaseDir, visitId);
     fs.mkdirSync(screenshotsDir, { recursive: true });
 
-    console.log(`\n=== TOKEN VISIBILITY VISIT ===`);
+    console.log(`\n=== TOKEN VISIBILITY VISIT (Session ${sessionId}) ===`);
     console.log(`Visit ID: ${visitId}`);
     console.log(`Token: ${tokenIdentifier}`);
     console.log(`URL: https://coinmarketcap.com/currencies/${tokenIdentifier}/`);
@@ -264,9 +148,9 @@ async function visitPage() {
 
     // Function to save screenshot with step name
     const saveScreenshot = async (page, stepName) => {
-        const screenshotPath = `${screenshotsDir}/${stepName}.png`;
+        const screenshotPath = path.join(screenshotsDir, `${stepName}.png`);
         await page.screenshot({ path: screenshotPath, fullPage: false });
-        console.log(`Screenshot saved: ${screenshotPath}`);
+        console.log(`[Session ${sessionId}] Screenshot saved: ${screenshotPath}`);
         return screenshotPath;
     };
 
@@ -280,7 +164,7 @@ async function visitPage() {
 
     try {
         // Launch browser with proxy
-        console.log('\nLaunching browser...');
+        console.log(`[Session ${sessionId}] Launching browser...`);
         browser = await puppeteer.launch({
             headless: true,  // Change to false to see the browser window
             args: [
@@ -312,7 +196,7 @@ async function visitPage() {
         ];
         const userAgent = userAgents[Math.floor(Math.random() * userAgents.length)];
         await page.setUserAgent(userAgent);
-        console.log(`Using user agent: ${userAgent.substring(0, 30)}...`);
+        console.log(`[Session ${sessionId}] Using user agent: ${userAgent.substring(0, 30)}...`);
 
         // Set referer to make it look like we're coming from Google
         await page.setExtraHTTPHeaders({
@@ -320,24 +204,24 @@ async function visitPage() {
         });
 
         // Navigate to the page
-        console.log('Visiting page...');
+        console.log(`[Session ${sessionId}] Visiting page...`);
         const startTime = Date.now();
         await page.goto(`https://coinmarketcap.com/currencies/${tokenIdentifier}/`, {
             waitUntil: 'networkidle2',
             timeout: 30000
         });
         const loadTime = Date.now() - startTime;
-        console.log(`Page loaded in ${loadTime}ms`);
+        console.log(`[Session ${sessionId}] Page loaded in ${loadTime}ms`);
 
         // Get the page title
         const title = await page.title();
-        console.log(`Page title: ${title}`);
+        console.log(`[Session ${sessionId}] Page title: ${title}`);
 
         // Take initial screenshot
         await saveScreenshot(page, '01-initial-load');
 
         // Accept cookies if the banner is present
-        console.log('Checking for cookie consent banner...');
+        console.log(`[Session ${sessionId}] Checking for cookie consent banner...`);
         try {
             // First check if the bottom cookie banner exists
             const bottomBannerSelector = '.cLyNAm, .cmc-cookie-policy-banner';
@@ -346,7 +230,7 @@ async function visitPage() {
             }, bottomBannerSelector);
 
             if (hasBottomBanner) {
-                console.log('Found bottom cookie banner');
+                console.log(`[Session ${sessionId}] Found bottom cookie banner`);
                 // Look for "Accept Cookies and Continue" button
                 const acceptButtonSelectors = [
                     'button:contains("Accept Cookies and Continue")',
@@ -382,7 +266,7 @@ async function visitPage() {
                     }, selector, buttonText);
 
                     if (hasButton) {
-                        console.log(`Clicked "${buttonText}" on bottom banner`);
+                        console.log(`[Session ${sessionId}] Clicked "${buttonText}" on bottom banner`);
                         await safeWait(1000);
                         await saveScreenshot(page, '02-bottom-cookies-accepted');
                         break;
@@ -407,7 +291,7 @@ async function visitPage() {
                 }, popupSelector);
 
                 if (hasPopup) {
-                    console.log(`Found cookie popup with selector: ${popupSelector}`);
+                    console.log(`[Session ${sessionId}] Found cookie popup with selector: ${popupSelector}`);
 
                     // Take a screenshot of the popup before closing
                     await saveScreenshot(page, '02a-cookie-popup');
@@ -457,7 +341,7 @@ async function visitPage() {
                         }, buttonSelector, buttonText, popupSelector);
 
                         if (clickedButton) {
-                            console.log(`Clicked "${buttonText}" in popup`);
+                            console.log(`[Session ${sessionId}] Clicked "${buttonText}" in popup`);
                             await safeWait(1000);
                             await saveScreenshot(page, '02b-popup-closed');
                             break;
@@ -505,7 +389,7 @@ async function visitPage() {
                 }, selector);
 
                 if (hasCookieButton) {
-                    console.log(`Found cookie consent button with selector: ${selector}`);
+                    console.log(`[Session ${sessionId}] Found cookie consent button with selector: ${selector}`);
                     await page.evaluate((sel) => {
                         // First try querySelector
                         let element = document.querySelector(sel);
@@ -525,21 +409,21 @@ async function visitPage() {
                         if (element) element.click();
                     }, selector);
 
-                    console.log('Clicked cookie consent button');
+                    console.log(`[Session ${sessionId}] Clicked cookie consent button`);
                     await safeWait(1000);
                     await saveScreenshot(page, '02-cookies-accepted');
                     break;
                 }
             }
         } catch (e) {
-            console.log('Error handling cookie consent:', e.message);
+            console.log(`[Session ${sessionId}] Error handling cookie consent:`, e.message);
         }
 
         // Check for "Do Not Sell or Share My Personal Data" popup
         await checkAndHandleDoNotSellPopup(page, saveScreenshot, safeWait);
 
         // Try to find and click on the "Add to Watchlist" button immediately after handling popups
-        console.log('Looking for Add to Watchlist button immediately after popup handling...');
+        console.log(`[Session ${sessionId}] Looking for Add to Watchlist button immediately after popup handling...`);
         try {
             const watchlistSelectors = [
                 // Add most specific selectors first based on the HTML structure
@@ -548,7 +432,6 @@ async function visitPage() {
                 'button[class*="WatchlistStar_watchlist-button"]',
                 'button.BaseButton_base__34gwo',
                 // Original selectors
-
                 'button[aria-label="Add to Watchlist"]',
                 'button[data-watchlist-add]',
                 'button.watchlistStar',
@@ -591,10 +474,10 @@ async function visitPage() {
                 }, selector);
 
                 if (hasWatchlistButton) {
-                    console.log(`Found watchlist button with selector: ${selector}`);
+                    console.log(`[Session ${sessionId}] Found watchlist button with selector: ${selector}`);
 
                     // Before clicking, take a screenshot of the pre-click state
-                    await saveScreenshot(page, '04-pre-watchlist-click');
+                    await saveScreenshot(page, '03-pre-watchlist-click');
 
                     // Try clicking it
                     await page.evaluate((sel) => {
@@ -606,7 +489,7 @@ async function visitPage() {
                         }
                     }, selector);
 
-                    console.log('Clicked Add to Watchlist button');
+                    console.log(`[Session ${sessionId}] Clicked Add to Watchlist button`);
                     watchlistClicked = true;
                     await safeWait(2000);
                     await saveScreenshot(page, '04-watchlist-clicked');
@@ -651,17 +534,17 @@ async function visitPage() {
                     });
 
                     if (watchlistVerification.success) {
-                        console.log('✅ Watchlist action appears successful!');
+                        console.log(`[Session ${sessionId}] ✅ Watchlist action appears successful!`);
                         if (watchlistVerification.colorChanged) {
-                            console.log('Star icon color has changed, indicating successful addition to watchlist');
+                            console.log(`[Session ${sessionId}] Star icon color has changed, indicating successful addition to watchlist`);
                         }
                         if (watchlistVerification.message) {
-                            console.log(`Confirmation message: ${watchlistVerification.message}`);
+                            console.log(`[Session ${sessionId}] Confirmation message: ${watchlistVerification.message}`);
                         }
-                        await saveScreenshot(page, '04a-watchlist-verification-success');
+                        await saveScreenshot(page, '05-watchlist-verification-success');
                     } else {
-                        console.log('⚠️ Could not verify watchlist action success');
-                        await saveScreenshot(page, '04b-watchlist-verification-unknown');
+                        console.log(`[Session ${sessionId}] ⚠️ Could not verify watchlist action success`);
+                        await saveScreenshot(page, '05-watchlist-verification-unknown');
                     }
 
                     // Check if a login popup appeared
@@ -672,7 +555,7 @@ async function visitPage() {
                     });
 
                     if (hasLoginPopup) {
-                        console.log('Login popup detected - closing it');
+                        console.log(`[Session ${sessionId}] Login popup detected - closing it`);
 
                         // Try to find and click close button
                         const closeSelectors = [
@@ -697,9 +580,9 @@ async function visitPage() {
                                     if (element) element.click();
                                 }, closeSelector);
 
-                                console.log('Closed login popup');
+                                console.log(`[Session ${sessionId}] Closed login popup`);
                                 await safeWait(1000);
-                                await saveScreenshot(page, '05-login-popup-closed');
+                                await saveScreenshot(page, '06-login-popup-closed');
                                 break;
                             }
                         }
@@ -709,17 +592,37 @@ async function visitPage() {
             }
 
             if (!watchlistClicked) {
-                console.log('Watchlist button not found or not clickable');
+                console.log(`[Session ${sessionId}] Watchlist button not found or not clickable`);
             }
         } catch (e) {
-            console.log('Error while trying to add to watchlist:', e.message);
+            console.log(`[Session ${sessionId}] Error while trying to add to watchlist:`, e.message);
         }
 
-        // Check again for "Do Not Sell" popup (it might appear at any time)
+        // Now do the scrolling after watchlist attempt
+        console.log(`[Session ${sessionId}] Scrolling up and down...`);
+        await page.evaluate(() => {
+            // Initial scroll down
+            window.scrollBy(0, 300);
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    // Scroll up
+                    window.scrollBy(0, -150);
+                    setTimeout(() => {
+                        // Scroll down again
+                        window.scrollBy(0, 200);
+                        resolve();
+                    }, 500 + Math.random() * 500);
+                }, 500 + Math.random() * 500);
+            });
+        });
+
+        await saveScreenshot(page, '07-initial-scrolling');
+
+        // Check again for privacy popup (it might appear after scrolling)
         await checkAndHandleDoNotSellPopup(page, saveScreenshot, safeWait);
 
         // First, scroll down gradually like a human would
-        console.log('Scrolling page naturally...');
+        console.log(`[Session ${sessionId}] Scrolling page naturally...`);
         await page.evaluate(() => {
             return new Promise((resolve) => {
                 let totalHeight = 0;
@@ -752,13 +655,13 @@ async function visitPage() {
             });
         });
 
-        await saveScreenshot(page, '06-scrolled-page');
+        await saveScreenshot(page, '08-scrolled-page');
 
-        // Check again for "Do Not Sell" popup (it might appear after scrolling)
+        // Check again for privacy popup
         await checkAndHandleDoNotSellPopup(page, saveScreenshot, safeWait);
 
         // Try to find and click on some tabs like Overview, Markets, etc.
-        console.log('Interacting with page elements...');
+        console.log(`[Session ${sessionId}] Interacting with page elements...`);
         try {
             // Try to find elements that look like tabs or navigation items
             const tabSelectors = [
@@ -785,7 +688,7 @@ async function visitPage() {
                 }, selector);
 
                 if (hasElements) {
-                    console.log(`Found clickable elements with selector: ${selector}`);
+                    console.log(`[Session ${sessionId}] Found clickable elements with selector: ${selector}`);
 
                     // Click on a random element matching this selector - but be safer not to navigate away
                     const didClick = await page.evaluate((sel) => {
@@ -811,18 +714,18 @@ async function visitPage() {
                     if (didClick) {
                         // Use safeWait instead of setTimeout directly
                         await safeWait(2000 + Math.random() * 3000);
-                        console.log('Waited after clicking tab');
-                        await saveScreenshot(page, '07-tab-clicked');
+                        console.log(`[Session ${sessionId}] Waited after clicking tab`);
+                        await saveScreenshot(page, '09-tab-clicked');
                         tabInteractionSuccessful = true;
                         break;
                     }
                 }
             }
         } catch (e) {
-            console.log('Could not interact with tabs:', e.message);
+            console.log(`[Session ${sessionId}] Could not interact with tabs:`, e.message);
         }
 
-        // Check again for "Do Not Sell" popup
+        // Check again for privacy popup
         await checkAndHandleDoNotSellPopup(page, saveScreenshot, safeWait);
 
         // Scroll to a different position
@@ -832,13 +735,11 @@ async function visitPage() {
 
         // Wait a random amount of time (5-15 seconds) to simulate reading
         const readTime = 5000 + Math.floor(Math.random() * 10000);
-        console.log(`Waiting ${readTime}ms to simulate reading the page...`);
+        console.log(`[Session ${sessionId}] Waiting ${readTime}ms to simulate reading the page...`);
         await safeWait(readTime);
-        const screenshotPath = `${screenshotsDir}/reading-page.png`;
-        await page.screenshot({ path: screenshotPath, fullPage: false });
-        console.log(`Screenshot saved to ${screenshotPath}`);
+        await saveScreenshot(page, '10-reading-page');
 
-        // Check again for "Do Not Sell" popup
+        // Check again for privacy popup
         await checkAndHandleDoNotSellPopup(page, saveScreenshot, safeWait);
 
         // Move mouse randomly across the page
@@ -850,7 +751,7 @@ async function visitPage() {
         });
 
         // Simulate mouse movements
-        console.log('Moving mouse randomly across page...');
+        console.log(`[Session ${sessionId}] Moving mouse randomly across page...`);
         for (let i = 0; i < 5; i++) {
             const x = Math.floor(Math.random() * viewportSize.width);
             const y = Math.floor(Math.random() * viewportSize.height);
@@ -859,11 +760,12 @@ async function visitPage() {
         }
 
         // Final screenshot
-        await saveScreenshot(page, '09-final-state');
+        await saveScreenshot(page, '11-final-state');
 
         // Log success
-        console.log('\n✅ VISIT SUCCESSFUL');
+        console.log(`\n[Session ${sessionId}] ✅ VISIT SUCCESSFUL`);
         logResult({
+            sessionId,
             success: true,
             title,
             loadTime,
@@ -874,20 +776,21 @@ async function visitPage() {
 
         return true;
     } catch (error) {
-        console.error(`\n❌ ERROR: ${error.message}`);
+        console.error(`\n[Session ${sessionId}] ❌ ERROR: ${error.message}`);
 
         // Try to save error screenshot if possible
         try {
             if (page) {
-                const errorScreenshotPath = `${screenshotsDir}/error.png`;
+                const errorScreenshotPath = path.join(screenshotsDir, 'error.png');
                 await page.screenshot({ path: errorScreenshotPath, fullPage: false });
-                console.log(`Error screenshot saved to ${errorScreenshotPath}`);
+                console.log(`[Session ${sessionId}] Error screenshot saved to ${errorScreenshotPath}`);
             }
         } catch (screenshotError) {
-            console.log('Could not save error screenshot:', screenshotError.message);
+            console.log(`[Session ${sessionId}] Could not save error screenshot:`, screenshotError.message);
         }
 
         logResult({
+            sessionId,
             success: false,
             error: error.message,
             proxy: `${proxy.host}:${proxy.port}`,
@@ -899,58 +802,84 @@ async function visitPage() {
         // Close the browser
         if (browser) {
             await browser.close();
-            console.log('Browser closed');
+            console.log(`[Session ${sessionId}] Browser closed`);
         }
     }
 }
 
-// Run multiple visits
-async function runVisits() {
-    console.log(`Starting ${visitCount} visits to increase token visibility`);
-    console.log(`Token: ${tokenIdentifier}`);
-    console.log(`Delay between visits: ${visitDelay}ms`);
+// Function to run a batch of concurrent visits
+async function runConcurrentVisits(batchSize) {
+    console.log(`\n=== Starting batch of ${batchSize} concurrent visits ===`);
 
-    let successCount = 0;
-
-    for (let i = 0; i < visitCount; i++) {
-        console.log(`\nRunning visit ${i+1} of ${visitCount}`);
-
-        // Try up to 3 times with different proxies if needed
-        let success = false;
-        let attempts = 0;
-        const maxAttempts = 3;
-
-        while (!success && attempts < maxAttempts) {
-            attempts++;
-            if (attempts > 1) {
-                console.log(`Attempt ${attempts}/${maxAttempts} with a different proxy...`);
-            }
-
-            success = await visitPage();
-
-            if (success) {
-                successCount++;
-                break;
-            } else if (attempts < maxAttempts) {
-                // Wait a moment before trying with a different proxy
-                console.log('Waiting 3 seconds before trying another proxy...');
-                await new Promise(resolve => setTimeout(resolve, 3000));
-            }
-        }
-
-        if (i < visitCount - 1) {
-            // Wait between visits
-            console.log(`Waiting ${visitDelay/1000} seconds before next visit...`);
-            await new Promise(resolve => setTimeout(resolve, visitDelay));
-        }
+    // Create array of visit promises
+    const visitPromises = [];
+    for (let i = 0; i < batchSize; i++) {
+        visitPromises.push(visitPage(i + 1)); // Session IDs start at 1
     }
 
-    console.log(`\n=== VISIT CAMPAIGN COMPLETED ===`);
-    console.log(`Total visits: ${visitCount}`);
+    // Wait for all visits to complete
+    const results = await Promise.all(visitPromises);
+
+    // Count successes
+    const successCount = results.filter(result => result).length;
+
+    console.log(`\n=== Batch completed ===`);
+    console.log(`Total visits: ${batchSize}`);
     console.log(`Successful: ${successCount}`);
-    console.log(`Failed: ${visitCount - successCount}`);
-    console.log(`Success rate: ${(successCount/visitCount*100).toFixed(2)}%`);
+    console.log(`Failed: ${batchSize - successCount}`);
+    console.log(`Success rate: ${(successCount/batchSize*100).toFixed(2)}%`);
+
+    return successCount;
 }
 
-// Run the visits
-runVisits().catch(console.error);
+// Main function to run visits
+async function main() {
+    const startTime = Date.now();
+    const totalVisits = parseInt(process.env.TOTAL_VISITS) || 10; // Default to 10 visits total
+    let completedVisits = 0;
+    let successfulVisits = 0;
+
+    console.log(`\n=== TOKEN VISIBILITY CAMPAIGN ===`);
+    console.log(`Token: ${tokenIdentifier}`);
+    console.log(`Total planned visits: ${totalVisits}`);
+    console.log(`Concurrent sessions: ${concurrentSessions}`);
+
+    // Calculate how many batches we need
+    const batches = Math.ceil(totalVisits / concurrentSessions);
+
+    for (let i = 0; i < batches; i++) {
+        // For the last batch, we might need fewer than concurrentSessions
+        const remainingVisits = totalVisits - completedVisits;
+        const batchSize = Math.min(concurrentSessions, remainingVisits);
+
+        console.log(`\nRunning batch ${i+1} of ${batches} (${batchSize} sessions)`);
+        const batchSuccesses = await runConcurrentVisits(batchSize);
+
+        completedVisits += batchSize;
+        successfulVisits += batchSuccesses;
+
+        // If this is not the final batch, add a delay between batches
+        if (i < batches - 1) {
+            const batchDelay = visitDelay + Math.floor(Math.random() * 5000); // Add some randomness
+            console.log(`Waiting ${batchDelay/1000} seconds before next batch...`);
+            await new Promise(r => setTimeout(r, batchDelay));
+        }
+    }
+
+    // Calculate statistics
+    const endTime = Date.now();
+    const totalTimeMin = ((endTime - startTime) / 60000).toFixed(2);
+
+    console.log(`\n=== CAMPAIGN COMPLETED ===`);
+    console.log(`Total visits: ${completedVisits}`);
+    console.log(`Successful: ${successfulVisits}`);
+    console.log(`Failed: ${completedVisits - successfulVisits}`);
+    console.log(`Success rate: ${(successfulVisits/completedVisits*100).toFixed(2)}%`);
+    console.log(`Total runtime: ${totalTimeMin} minutes`);
+}
+
+// Run the main function
+main().catch(error => {
+    console.error(`Fatal error: ${error.message}`);
+    process.exit(1);
+});
