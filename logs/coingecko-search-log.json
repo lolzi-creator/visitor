@@ -1,0 +1,725 @@
+[
+  {
+    "timestamp": "2025-03-18T10:31:49.279Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 6688,
+    "proxy": "92.112.174.67:5651",
+    "screenshots": "screenshots/coingecko/search-s2-1742293887766",
+    "visitId": "search-s2-1742293887766"
+  },
+  {
+    "timestamp": "2025-03-18T10:31:53.738Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 12404,
+    "proxy": "103.251.223.100:6079",
+    "screenshots": "screenshots/coingecko/search-s4-1742293887769",
+    "visitId": "search-s4-1742293887769"
+  },
+  {
+    "timestamp": "2025-03-18T10:31:58.636Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 17639,
+    "proxy": "81.21.234.148:6537",
+    "screenshots": "screenshots/coingecko/search-s1-1742293887758",
+    "visitId": "search-s1-1742293887758"
+  },
+  {
+    "timestamp": "2025-03-18T10:32:15.984Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 3512,
+    "proxy": "31.58.23.77:5650",
+    "screenshots": "screenshots/coingecko/search-s3-1742293887768",
+    "visitId": "search-s3-1742293887768"
+  },
+  {
+    "timestamp": "2025-03-18T10:36:09.705Z",
+    "sessionId": 4,
+    "success": false,
+    "token": "distribute",
+    "error": "searchInputFound is not defined",
+    "proxy": "31.58.19.121:6393",
+    "screenshots": "screenshots/coingecko/search-s4-1742294163963",
+    "visitId": "search-s4-1742294163963"
+  },
+  {
+    "timestamp": "2025-03-18T10:36:26.222Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 3793,
+    "proxy": "92.112.174.67:5651",
+    "screenshots": "screenshots/coingecko/search-s2-1742294163962",
+    "visitId": "search-s2-1742294163962"
+  },
+  {
+    "timestamp": "2025-03-18T10:36:28.877Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 8459,
+    "proxy": "2.57.20.183:6175",
+    "screenshots": "screenshots/coingecko/search-s1-1742294163958",
+    "visitId": "search-s1-1742294163958"
+  },
+  {
+    "timestamp": "2025-03-18T10:36:32.847Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 11977,
+    "proxy": "45.39.35.111:5544",
+    "screenshots": "screenshots/coingecko/search-s3-1742294163963",
+    "visitId": "search-s3-1742294163963"
+  },
+  {
+    "timestamp": "2025-03-18T10:37:06.687Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 12332,
+    "proxy": "45.39.35.111:5544",
+    "screenshots": "screenshots/coingecko/search-s1-1742294198023",
+    "visitId": "search-s1-1742294198023"
+  },
+  {
+    "timestamp": "2025-03-18T10:37:06.822Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 12507,
+    "proxy": "185.15.178.83:5767",
+    "screenshots": "screenshots/coingecko/search-s4-1742294198024",
+    "visitId": "search-s4-1742294198024"
+  },
+  {
+    "timestamp": "2025-03-18T10:37:07.817Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 13181,
+    "proxy": "104.239.105.178:6708",
+    "screenshots": "screenshots/coingecko/search-s3-1742294198024",
+    "visitId": "search-s3-1742294198024"
+  },
+  {
+    "timestamp": "2025-03-18T10:37:10.065Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 15617,
+    "proxy": "142.111.48.200:6977",
+    "screenshots": "screenshots/coingecko/search-s2-1742294198024",
+    "visitId": "search-s2-1742294198024"
+  },
+  {
+    "timestamp": "2025-03-18T10:37:36.649Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 3241,
+    "proxy": "31.58.23.77:5650",
+    "screenshots": "screenshots/coingecko/search-s2-1742294235660",
+    "visitId": "search-s2-1742294235660"
+  },
+  {
+    "timestamp": "2025-03-18T10:37:39.678Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "note": "Original token not found, clicked on alternative result",
+    "loadTime": 7891,
+    "proxy": "104.239.105.178:6708",
+    "screenshots": "screenshots/coingecko/search-s1-1742294235657",
+    "visitId": "search-s1-1742294235657"
+  },
+  {
+    "timestamp": "2025-03-18T10:46:19.862Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct navigation to token page successful",
+    "proxy": "31.58.30.208:6790",
+    "screenshots": "screenshots/coingecko/search-s1-1742294763428",
+    "visitId": "search-s1-1742294763428"
+  },
+  {
+    "timestamp": "2025-03-18T10:46:29.577Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "45.43.191.48:6009",
+    "screenshots": "screenshots/coingecko/search-s4-1742294763436",
+    "visitId": "search-s4-1742294763436"
+  },
+  {
+    "timestamp": "2025-03-18T10:46:30.909Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "142.202.254.119:6097",
+    "screenshots": "screenshots/coingecko/search-s3-1742294763435",
+    "visitId": "search-s3-1742294763435"
+  },
+  {
+    "timestamp": "2025-03-18T10:46:33.464Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "103.251.223.100:6079",
+    "screenshots": "screenshots/coingecko/search-s2-1742294763434",
+    "visitId": "search-s2-1742294763434"
+  },
+  {
+    "timestamp": "2025-03-18T10:47:04.348Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "109.196.163.163:6261",
+    "screenshots": "screenshots/coingecko/search-s4-1742294799710",
+    "visitId": "search-s4-1742294799710"
+  },
+  {
+    "timestamp": "2025-03-18T10:47:04.459Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "109.196.163.163:6261",
+    "screenshots": "screenshots/coingecko/search-s2-1742294799708",
+    "visitId": "search-s2-1742294799708"
+  },
+  {
+    "timestamp": "2025-03-18T10:47:06.665Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "161.123.93.54:5784",
+    "screenshots": "screenshots/coingecko/search-s1-1742294799707",
+    "visitId": "search-s1-1742294799707"
+  },
+  {
+    "timestamp": "2025-03-18T10:50:41.101Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct navigation to token page successful",
+    "proxy": "31.58.30.208:6790",
+    "screenshots": "screenshots/coingecko/search-s4-1742295024908",
+    "visitId": "search-s4-1742295024908"
+  },
+  {
+    "timestamp": "2025-03-18T10:50:49.154Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "142.202.254.119:6097",
+    "screenshots": "screenshots/coingecko/search-s3-1742295024908",
+    "visitId": "search-s3-1742295024908"
+  },
+  {
+    "timestamp": "2025-03-18T10:50:55.436Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "185.101.253.17:5577",
+    "screenshots": "screenshots/coingecko/search-s1-1742295024905",
+    "visitId": "search-s1-1742295024905"
+  },
+  {
+    "timestamp": "2025-03-18T10:51:02.626Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "81.21.234.148:6537",
+    "screenshots": "screenshots/coingecko/search-s2-1742295024907",
+    "visitId": "search-s2-1742295024907"
+  },
+  {
+    "timestamp": "2025-03-18T10:51:36.419Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "185.101.253.17:5577",
+    "screenshots": "screenshots/coingecko/search-s4-1742295070722",
+    "visitId": "search-s4-1742295070722"
+  },
+  {
+    "timestamp": "2025-03-18T10:51:39.249Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "92.112.174.67:5651",
+    "screenshots": "screenshots/coingecko/search-s3-1742295070721",
+    "visitId": "search-s3-1742295070721"
+  },
+  {
+    "timestamp": "2025-03-18T10:51:40.999Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "45.43.191.48:6009",
+    "screenshots": "screenshots/coingecko/search-s2-1742295070721",
+    "visitId": "search-s2-1742295070721"
+  },
+  {
+    "timestamp": "2025-03-18T10:51:41.704Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "185.15.178.83:5767",
+    "screenshots": "screenshots/coingecko/search-s1-1742295070719",
+    "visitId": "search-s1-1742295070719"
+  },
+  {
+    "timestamp": "2025-03-18T10:52:04.616Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct navigation to token page successful",
+    "proxy": "145.223.44.48:5731",
+    "screenshots": "screenshots/coingecko/search-s2-1742295109545",
+    "visitId": "search-s2-1742295109545"
+  },
+  {
+    "timestamp": "2025-03-18T10:52:17.408Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "107.181.150.84:5833",
+    "screenshots": "screenshots/coingecko/search-s1-1742295109544",
+    "visitId": "search-s1-1742295109544"
+  },
+  {
+    "timestamp": "2025-03-18T10:55:19.236Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct navigation to token page successful",
+    "proxy": "145.223.44.48:5731",
+    "screenshots": "screenshots/coingecko/search-s1-1742295305368",
+    "visitId": "search-s1-1742295305368"
+  },
+  {
+    "timestamp": "2025-03-18T10:55:19.786Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct navigation to token page successful",
+    "proxy": "31.58.19.121:6393",
+    "screenshots": "screenshots/coingecko/search-s2-1742295305370",
+    "visitId": "search-s2-1742295305370"
+  },
+  {
+    "timestamp": "2025-03-18T10:55:28.579Z",
+    "sessionId": 5,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "107.181.150.84:5833",
+    "screenshots": "screenshots/coingecko/search-s5-1742295305382",
+    "visitId": "search-s5-1742295305382"
+  },
+  {
+    "timestamp": "2025-03-18T10:55:35.793Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "104.239.105.178:6708",
+    "screenshots": "screenshots/coingecko/search-s4-1742295305379",
+    "visitId": "search-s4-1742295305379"
+  },
+  {
+    "timestamp": "2025-03-18T10:55:38.593Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "2.57.20.183:6175",
+    "screenshots": "screenshots/coingecko/search-s3-1742295305375",
+    "visitId": "search-s3-1742295305375"
+  },
+  {
+    "timestamp": "2025-03-18T11:02:15.668Z",
+    "sessionId": 1,
+    "success": false,
+    "token": "distribute",
+    "error": "page.waitForTimeout is not a function",
+    "proxy": "31.58.19.121:6393",
+    "screenshots": "screenshots/coingecko/search-s1-1742295730768",
+    "visitId": "search-s1-1742295730768"
+  },
+  {
+    "timestamp": "2025-03-18T11:02:47.499Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "104.239.105.178:6708",
+    "screenshots": "screenshots/coingecko/search-s2-1742295739967",
+    "visitId": "search-s2-1742295739967"
+  },
+  {
+    "timestamp": "2025-03-18T11:03:17.886Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "31.58.23.77:5650",
+    "screenshots": "screenshots/coingecko/search-s3-1742295771619",
+    "visitId": "search-s3-1742295771619"
+  },
+  {
+    "timestamp": "2025-03-18T11:04:04.466Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "81.21.234.148:6537",
+    "screenshots": "screenshots/coingecko/search-s4-1742295804334",
+    "visitId": "search-s4-1742295804334"
+  },
+  {
+    "timestamp": "2025-03-18T11:04:07.067Z",
+    "sessionId": 1,
+    "success": false,
+    "token": "distribute",
+    "error": "page.waitForTimeout is not a function",
+    "proxy": "198.37.118.85:5544",
+    "screenshots": "screenshots/coingecko/search-s1-1742295835729",
+    "visitId": "search-s1-1742295835729"
+  },
+  {
+    "timestamp": "2025-03-18T11:04:32.082Z",
+    "sessionId": 5,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "185.101.253.17:5577",
+    "screenshots": "screenshots/coingecko/search-s5-1742295847701",
+    "visitId": "search-s5-1742295847701"
+  },
+  {
+    "timestamp": "2025-03-18T11:04:40.147Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "185.15.178.83:5767",
+    "screenshots": "screenshots/coingecko/search-s2-1742295850306",
+    "visitId": "search-s2-1742295850306"
+  },
+  {
+    "timestamp": "2025-03-18T11:05:14.531Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "185.15.178.83:5767",
+    "screenshots": "screenshots/coingecko/search-s3-1742295884580",
+    "visitId": "search-s3-1742295884580"
+  },
+  {
+    "timestamp": "2025-03-18T11:05:49.061Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "185.101.253.17:5577",
+    "screenshots": "screenshots/coingecko/search-s4-1742295920824",
+    "visitId": "search-s4-1742295920824"
+  },
+  {
+    "timestamp": "2025-03-18T11:05:59.132Z",
+    "sessionId": 5,
+    "success": false,
+    "token": "distribute",
+    "error": "page.waitForTimeout is not a function",
+    "proxy": "145.223.44.48:5731",
+    "screenshots": "screenshots/coingecko/search-s5-1742295955482",
+    "visitId": "search-s5-1742295955482"
+  },
+  {
+    "timestamp": "2025-03-18T11:06:36.283Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct token page access",
+    "proxy": "185.15.178.83:5767",
+    "screenshots": "screenshots/coingecko/search-s3-1742295987171",
+    "visitId": "search-s3-1742295987171"
+  },
+  {
+    "timestamp": "2025-03-18T11:06:38.135Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct token page access",
+    "proxy": "142.202.254.119:6097",
+    "screenshots": "screenshots/coingecko/search-s4-1742295987171",
+    "visitId": "search-s4-1742295987171"
+  },
+  {
+    "timestamp": "2025-03-18T11:06:38.995Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct token page access",
+    "proxy": "2.57.20.183:6175",
+    "screenshots": "screenshots/coingecko/search-s2-1742295987170",
+    "visitId": "search-s2-1742295987170"
+  },
+  {
+    "timestamp": "2025-03-18T11:06:42.971Z",
+    "sessionId": 5,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct token page access",
+    "proxy": "31.58.30.208:6790",
+    "screenshots": "screenshots/coingecko/search-s5-1742295987172",
+    "visitId": "search-s5-1742295987172"
+  },
+  {
+    "timestamp": "2025-03-18T11:06:46.746Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct token page access",
+    "proxy": "185.101.253.17:5577",
+    "screenshots": "screenshots/coingecko/search-s1-1742295987169",
+    "visitId": "search-s1-1742295987169"
+  },
+  {
+    "timestamp": "2025-03-18T11:07:41.964Z",
+    "sessionId": 8,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct navigation to token page successful",
+    "proxy": "31.58.30.208:6790",
+    "screenshots": "screenshots/coingecko/search-s8-1742296046549",
+    "visitId": "search-s8-1742296046549"
+  },
+  {
+    "timestamp": "2025-03-18T11:07:42.658Z",
+    "sessionId": 9,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct navigation to token page successful",
+    "proxy": "31.58.19.121:6393",
+    "screenshots": "screenshots/coingecko/search-s9-1742296046550",
+    "visitId": "search-s9-1742296046550"
+  },
+  {
+    "timestamp": "2025-03-18T11:07:51.648Z",
+    "sessionId": 10,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "31.58.23.77:5650",
+    "screenshots": "screenshots/coingecko/search-s10-1742296046550",
+    "visitId": "search-s10-1742296046550"
+  },
+  {
+    "timestamp": "2025-03-18T11:07:54.087Z",
+    "sessionId": 6,
+    "success": false,
+    "token": "distribute",
+    "error": "Protocol error (Page.captureScreenshot): Session closed. Most likely the page has been closed.",
+    "proxy": "45.39.35.111:5544",
+    "screenshots": "screenshots/coingecko/search-s6-1742296046548",
+    "visitId": "search-s6-1742296046548"
+  },
+  {
+    "timestamp": "2025-03-18T11:07:55.287Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "note": "Direct navigation to token page successful",
+    "proxy": "31.58.30.208:6790",
+    "screenshots": "screenshots/coingecko/search-s3-1742296046547",
+    "visitId": "search-s3-1742296046547"
+  },
+  {
+    "timestamp": "2025-03-18T11:07:58.971Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "31.58.23.77:5650",
+    "screenshots": "screenshots/coingecko/search-s4-1742296046547",
+    "visitId": "search-s4-1742296046547"
+  },
+  {
+    "timestamp": "2025-03-18T11:08:03.208Z",
+    "sessionId": 5,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "81.21.234.148:6537",
+    "screenshots": "screenshots/coingecko/search-s5-1742296046548",
+    "visitId": "search-s5-1742296046548"
+  },
+  {
+    "timestamp": "2025-03-18T11:08:03.546Z",
+    "sessionId": 7,
+    "success": false,
+    "token": "distribute",
+    "error": "Navigation timeout of 30000 ms exceeded",
+    "proxy": "103.251.223.100:6079",
+    "screenshots": "screenshots/coingecko/search-s7-1742296046548",
+    "visitId": "search-s7-1742296046548"
+  },
+  {
+    "timestamp": "2025-03-18T11:08:05.958Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "81.21.234.148:6537",
+    "screenshots": "screenshots/coingecko/search-s1-1742296046544",
+    "visitId": "search-s1-1742296046544"
+  },
+  {
+    "timestamp": "2025-03-18T11:08:11.906Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "url": "https://www.coingecko.com/en/coins/distribute",
+    "proxy": "45.43.191.48:6009",
+    "screenshots": "screenshots/coingecko/search-s2-1742296046546",
+    "visitId": "search-s2-1742296046546"
+  },
+  {
+    "timestamp": "2025-03-18T11:11:34.459Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "note": "Found via dropdown search results",
+    "proxy": "185.101.253.17:5577",
+    "screenshots": "screenshots/coingecko/search-s3-1742296279250",
+    "visitId": "search-s3-1742296279250"
+  },
+  {
+    "timestamp": "2025-03-18T11:11:35.538Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "note": "Found via dropdown search results",
+    "proxy": "185.15.178.83:5767",
+    "screenshots": "screenshots/coingecko/search-s1-1742296279248",
+    "visitId": "search-s1-1742296279248"
+  },
+  {
+    "timestamp": "2025-03-18T11:11:35.965Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "note": "Found via dropdown search results",
+    "proxy": "185.15.178.83:5767",
+    "screenshots": "screenshots/coingecko/search-s2-1742296279249",
+    "visitId": "search-s2-1742296279249"
+  },
+  {
+    "timestamp": "2025-03-18T11:11:37.013Z",
+    "sessionId": 5,
+    "success": true,
+    "token": "distribute",
+    "note": "Found via dropdown search results",
+    "proxy": "161.123.93.54:5784",
+    "screenshots": "screenshots/coingecko/search-s5-1742296279251",
+    "visitId": "search-s5-1742296279251"
+  },
+  {
+    "timestamp": "2025-03-18T11:11:40.084Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "note": "Found via dropdown search results",
+    "proxy": "104.239.105.178:6708",
+    "screenshots": "screenshots/coingecko/search-s4-1742296279250",
+    "visitId": "search-s4-1742296279250"
+  },
+  {
+    "timestamp": "2025-03-18T11:12:23.073Z",
+    "sessionId": 4,
+    "success": true,
+    "token": "distribute",
+    "note": "Found via dropdown search results",
+    "proxy": "185.15.178.83:5767",
+    "screenshots": "screenshots/coingecko/search-s4-1742296326315",
+    "visitId": "search-s4-1742296326315"
+  },
+  {
+    "timestamp": "2025-03-18T11:12:23.684Z",
+    "sessionId": 3,
+    "success": true,
+    "token": "distribute",
+    "note": "Found via dropdown search results",
+    "proxy": "2.57.20.183:6175",
+    "screenshots": "screenshots/coingecko/search-s3-1742296326314",
+    "visitId": "search-s3-1742296326314"
+  },
+  {
+    "timestamp": "2025-03-18T11:12:24.085Z",
+    "sessionId": 5,
+    "success": true,
+    "token": "distribute",
+    "note": "Found via dropdown search results",
+    "proxy": "161.123.93.54:5784",
+    "screenshots": "screenshots/coingecko/search-s5-1742296326315",
+    "visitId": "search-s5-1742296326315"
+  },
+  {
+    "timestamp": "2025-03-18T11:12:25.485Z",
+    "sessionId": 1,
+    "success": true,
+    "token": "distribute",
+    "note": "Found via dropdown search results",
+    "proxy": "103.251.223.100:6079",
+    "screenshots": "screenshots/coingecko/search-s1-1742296326312",
+    "visitId": "search-s1-1742296326312"
+  },
+  {
+    "timestamp": "2025-03-18T11:12:37.432Z",
+    "sessionId": 2,
+    "success": true,
+    "token": "distribute",
+    "note": "Found via Enter key search results",
+    "proxy": "81.21.234.148:6537",
+    "screenshots": "screenshots/coingecko/search-s2-1742296326314",
+    "visitId": "search-s2-1742296326314"
+  }
+]
